@@ -9,7 +9,7 @@ PAGELINKS_URL="${DOWNLOAD_URL}/${FILE_PREFIX}pagelinks$FILE_FORMAT"
 REDIRECT_URL="${DOWNLOAD_URL}/${FILE_PREFIX}redirect$FILE_FORMAT"
 
 
-OUT_DIR="resources"
+OUT_DIR="resources_tmp"
 mkdir -p $OUT_DIR
 
 echo "[INFO] begin download of redirect dump"
