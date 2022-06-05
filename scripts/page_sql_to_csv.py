@@ -26,11 +26,9 @@ for i, line in enumerate(INPUT_FILE):
                 insert_statement_found = True
             # end of object
             elif character == ')' and line[j+1] == ',':
-
                 n = len(out.split(','))
                 if n == PAGE_RECORD_ATTRIBUTES:
                     print(out)
-
                 insert_statement_found = False
                 out = ""
             elif insert_statement_found:
