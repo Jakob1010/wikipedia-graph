@@ -13,23 +13,21 @@ insert_statement_found = False
 page_record_found = False
 
 for i, line in enumerate(INPUT_FILE):
-
     # start from first insert statement
     if line.startswith('INSERT INTO'):
         insert_statement_found = True
-
     if insert_statement_found:
         # iterate over single line
         for j, character in enumerate(line):
             # start of object
             if character == '(':
-                insert_statement_found = True
+                page_record_found = True
             # end of object
             elif character == ')' and line[j+1] == ',':
                 n = len(out.split(','))
                 if n == PAGE_RECORD_ATTRIBUTES:
                     print(out)
-                insert_statement_found = False
+                page_record_found = False
                 out = ""
-            elif insert_statement_found:
+            elif page_record_found:
                 out += character
