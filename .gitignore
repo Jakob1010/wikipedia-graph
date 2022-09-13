@@ -1,5 +1,6 @@
 # temporary resources
 scripts/resources_tmp/*
+docker/neo4j/import/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

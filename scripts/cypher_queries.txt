@@ -1,0 +1,19 @@
+// create pages
+:auto USING PERIODIC COMMIT LOAD CSV FROM 'file:///import/pages.csv' AS line
+CREATE (:Page {page_id: toInteger(line[0]), title: line[2]})
+
+:auto USING PERIODIC COMMIT LOAD CSV FROM 'file:///import/pages.csv' AS line
+CREATE (:Page {page_id: toInteger(line[0]), title: replace(line[2], "'", "")})
+
+
+// create relationship (pagelinks)
+:auto USING PERIODIC COMMIT 1000
+LOAD CSV FROM "file:///import/pagelinks.csv" AS row
+MATCH (page1:Page {page_id: toInteger(row[0])})
+MATCH (page2:Page {page_id: toInteger(row[1])})
+MERGE (page1)-[:pagelink]->(page2)
+
+
+// admin import tool
+sudo /bin/neo4j-admin import --database wiki --skip-bad-relationships --nodes=Page="pages_header.csv,pages.csv" --relationships=Pagelink="pagelinks_header.csv,pagelinks.csv" 
+

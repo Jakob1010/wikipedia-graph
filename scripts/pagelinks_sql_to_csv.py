@@ -14,19 +14,23 @@ title_to_id = {}
 for line in PAGES_FILE:
     page_attributes = line.split(',')
     title_to_id[page_attributes[2]] = page_attributes[0]
+########################################################
+
+
+
+
 
 # 2. Extract pagelinks and print to stout
 PAGELINKS_FILENAME = "dewiki-20220320-pagelinks.sql"
 PAGELINKS_PATH = "resources_tmp/"
 PAGELINKS_FILE = open(PAGELINKS_PATH + PAGELINKS_FILENAME)
-
-PAGE_RECORD_ATTRIBUTES = 13
+PAGE_RECORD_ATTRIBUTES = 4
 
 out = ""
 insert_statement_found = False
 page_record_found = False
 
-for i, line in enumerate(INPUT_FILE):
+for i, line in enumerate(PAGELINKS_FILE):
     # start from first insert statement
     if line.startswith('INSERT INTO'):
         insert_statement_found = True
@@ -38,9 +42,10 @@ for i, line in enumerate(INPUT_FILE):
                 page_record_found = True
             # end of object
             elif character == ')' and line[j+1] == ',':
-                n = len(out.split(','))
-                if n == PAGE_RECORD_ATTRIBUTES:
-                    print(out)
+                attributes = out.split(',')
+                n = len(attributes)
+                if n == PAGE_RECORD_ATTRIBUTES and attributes[2] in title_to_id:
+                    print(attributes[0] + ',' + title_to_id[attributes[2]])
                 page_record_found = False
                 out = ""
             elif page_record_found:
