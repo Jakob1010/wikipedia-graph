@@ -1,5 +1,5 @@
 #!/bin/sh
-if [ ! -d /data/databases/neo4j.db ]; then { /var/lib/neo4j/bin/neo4j-admin import \
+if [ ! -d /data/databases/neo4j/ ]; then { /var/lib/neo4j/bin/neo4j-admin import \
 --database=neo4j \
 --skip-bad-relationships  \
 --nodes=Page="/var/lib/neo4j/import/pages_header.csv,/var/lib/neo4j/import/pages.csv" \
