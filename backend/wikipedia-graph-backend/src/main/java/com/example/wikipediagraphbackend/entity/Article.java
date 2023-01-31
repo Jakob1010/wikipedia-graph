@@ -3,16 +3,19 @@ package com.example.wikipediagraphbackend.entity;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.Property;
 
-@Node
-public class Page {
+@Node("Page")
+public class Article {
 
     @Id
     @GeneratedValue
     private long pageId;
+
+    @Property("title")
     private String title;
 
-    public Page() {}
+    public Article() {}
 
     public String getTitle() {
         return title;
