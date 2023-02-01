@@ -38,7 +38,7 @@ public class ArticleServiceImpl implements ArticleService {
         LOGGER.debug("findAllByTitle title:{}",title);
         Page p = null;
         try {
-            p = dao.findAllByTitleLike(title, page);
+            p = dao.findAllByTitleIgnoreCaseContaining(title, page);
             return p;
         } catch (Exception ex) {
             LOGGER.error(ex.getMessage());
