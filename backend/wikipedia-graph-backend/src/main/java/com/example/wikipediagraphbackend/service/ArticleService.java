@@ -18,5 +18,5 @@ public interface ArticleService {
      * @param title
      * @return the Article with the given id
      */
-    Page<Article> findAllByTitle(Pageable page, String title);
+    Page<Article> findAllByTitle(String title, Pageable page);
 }

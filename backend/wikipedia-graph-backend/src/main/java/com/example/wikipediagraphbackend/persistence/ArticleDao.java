@@ -7,4 +7,6 @@ import org.springframework.data.domain.Pageable;
 public interface ArticleDao extends Neo4jRepository<Article, Long> {
     Article findByPageId(long id);
     Page<Article> findAll(Pageable pageable);
+
+    Page<Article> findAllByTitleLike(String title, Pageable pageable);
 }

@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
@@ -43,10 +44,9 @@ public class ArticleEndpoint {
     @GetMapping
     @PageableAsQueryParam
     @ResponseStatus(HttpStatus.OK)
-    public Page<Article> getArticles(Pageable pageable) {
+    public Page<Article> getArticles(@RequestParam(name = "title") String title, Pageable pageable) {
         LOGGER.info("GET {}", BASE_URL);
-        Page page = service.findAllByTitle(pageable, "");
-        return page;
+        return service.findAllByTitle(title, pageable);
     }
 
 

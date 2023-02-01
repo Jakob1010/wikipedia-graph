@@ -34,11 +34,11 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public Page<Article> findAllByTitle(Pageable page, String title) {
+    public Page<Article> findAllByTitle(String title, Pageable page) {
         LOGGER.debug("findAllByTitle title:{}",title);
         Page p = null;
         try {
-            p =  dao.findAll(page);
+            p = dao.findAllByTitleLike(title, page);
             return p;
         } catch (Exception ex) {
             LOGGER.error(ex.getMessage());
