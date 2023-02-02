@@ -1,0 +1,31 @@
+stages:
+  - validate
+  - build
+
+lint-frontend:
+  image: node:18.12.1-slim
+  stage: validate
+  rules:
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME != $CI_DEFAULT_BRANCH
+      changes:
+        - 'frontend/**/*'
+  before_script:
+    - 'cd frontend'
+    - 'npm ci'
+  script:
+    - 'npm run lint'
+
+build-frontend:
+  image: node:18.12.1-slim
+  stage: build
+  rules:
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME != $CI_DEFAULT_BRANCH
+      changes:
+          - 'frontend/**/*'
+  before_script:
+  - 'cd frontend'
+  - 'npm ci'
+  script:
+  - 'npm run build'

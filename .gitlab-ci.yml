@@ -1,0 +1,8 @@
+stages:
+  - dependencies
+  - validate
+  - test
+  - build
+
+include:
+  - 'frontend/.gitlab-ci.yml'
