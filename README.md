@@ -1,6 +1,6 @@
 ![Frontend](https://github.com/Jakob1010/wikipedia-graph/actions/workflows/frontend.yml/badge.svg)
 
-# wikipedia-graph
+# Wikipedia as a Graph
 Hey! This application is intended to visualize wikipedia in the form of a graph.
 The idea is to:
 1. [DONE] Get the data. (wikipedia articles/pages and references)
