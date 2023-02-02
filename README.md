@@ -1,3 +1,5 @@
+![Frontend](https://github.com/Jakob1010/wikipedia-graph/actions/workflows/frontend.yml/badge.svg)
+
 # wikipedia-graph
 Hey! This application is intended to visualize wikipedia in the form of a graph.
 The idea is to:
