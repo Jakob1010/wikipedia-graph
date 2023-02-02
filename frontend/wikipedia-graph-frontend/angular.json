@@ -103,9 +103,21 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "wikipedia-graph-frontend"
+  "defaultProject": "wikipedia-graph-frontend",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
